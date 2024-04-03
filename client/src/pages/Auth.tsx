@@ -10,7 +10,7 @@ const Auth = () => {
     }
 
     return (
-        <div>
+        <>
             {register ?
             <Register handleToggleRegister={handleToggleRegister} />
           :
@@ -18,7 +18,7 @@ const Auth = () => {
             }
 
 
-        </div>
+        </>
     )
 }
 

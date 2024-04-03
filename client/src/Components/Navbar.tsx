@@ -30,7 +30,7 @@ const Navbar = () => {
         </div>
         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-neutral rounded-box w-52">
           <li>
-            <a className="justify-between text-white">
+            <a href="/profile" className="justify-between text-white">
               Profile
             </a>
           </li>

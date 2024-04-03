@@ -6,8 +6,6 @@ import Home from "../pages/Home";
 import Products from "../pages/Products";
 import Auth from "../pages/Auth";
 import Profile from "../pages/Profile";
-import UpdateAddress from "../pages/UpdateAddress";
-
 
 export const router = createBrowserRouter([
     {
@@ -30,12 +28,7 @@ export const router = createBrowserRouter([
             {
                 path: "/profile",
                 element: <Profile />,
-            },
-            {
-                path: "/update-address",
-                element: <UpdateAddress />,
-            },
-
+            }
         ],
     },
 ]);
