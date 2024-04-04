@@ -1,20 +1,18 @@
 import express from "express";
-import http from 'http';
 import dotenv from 'dotenv'
-import { json } from "body-parser";
 import { stripeRouter } from "./routes/stripe";
-import { connectToStripe } from "./controllers/stripe";
 import cors from 'cors'
+import { userRouter } from "./routes/users";
 
 dotenv.config()
 
 const app = express()
-const stripeRoute = 
 
 app.use(express.json())
-app.use(cors)
+app.use(cors())
 
-app.use("/payments", stripeRouter, connectToStripe)
+app.use("/payments", stripeRouter)
+app.use("/accounts", userRouter)
 
 
 app.listen(3000, () => {
