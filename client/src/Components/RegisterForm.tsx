@@ -10,7 +10,7 @@ interface IRegisterProps {
 
 const Register = ({ handleToggleRegister }: IRegisterProps) => {
 
-    const [user, setUser] = useState(new User("", "", "", { city: "", country: "", line1: "", postal_code: "", state: "" }))
+    const [user, setUser] = useState(new User("", "", "", { country: "", address: "", postcode: "", state: "" }))
     const [passwords, setPasswords] = useState({ password1: "", password2: "", passwordsMatch: false, passwordLengthWarning: false })
     const navigate = useNavigate()
 
@@ -40,6 +40,10 @@ const Register = ({ handleToggleRegister }: IRegisterProps) => {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUser({ ...user, [e.target.name]: e.target.value })
+    }
+
+    const handleAddressChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUser({ ...user, address: { ...user.address, [e.target.name]: e.target.value } })
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -79,7 +83,7 @@ const Register = ({ handleToggleRegister }: IRegisterProps) => {
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">Name</label>
-                        <input onChange={handleChange} type="password" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Maximus Decimus Meridius" />
+                        <input onChange={handleChange} type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Maximus Decimus Meridius" />
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">Password</label>
@@ -87,23 +91,23 @@ const Register = ({ handleToggleRegister }: IRegisterProps) => {
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">Confirm password</label>
-                        <input onChange={handlePasswordChange} type="text" name="password2" id="confirm-password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700" />{!passwords.passwordsMatch && <span>Passwords must match</span>}
+                        <input onChange={handlePasswordChange} type="password" name="password2" id="confirm-password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700" />{!passwords.passwordsMatch && <span>Passwords must match</span>}
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">Country</label>
-                        <input onChange={handleChange} type="text" name="Country" id="Country" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Country" required />
+                        <input onChange={handleAddressChange} type="text" name="country" id="Country" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Country" required />
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">Address</label>
-                        <input onChange={handleChange} type="text" name="address" id="address" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="123 Bob street" required />
+                        <input onChange={handleAddressChange} type="text" name="address" id="address" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="123 Bob street" required />
                     </div>
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900">County/Region</label>
-                        <input onChange={handleChange} type="text" name="county" id="county" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Yorkshire" required />
+                        <label className="block mb-2 text-sm font-medium text-gray-900">State</label>
+                        <input onChange={handleAddressChange} type="text" name="state" id="state" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Yorkshire" required />
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">Post Code</label>
-                        <input onChange={handleChange} type="number" name="postcode" id="postcode" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="111 11" required />
+                        <input onChange={handleAddressChange} type="number" name="postcode" id="postcode" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="111 11" required />
                     </div>
                     <div className="flex items-center">
                         <div className="flex items-center h-5">

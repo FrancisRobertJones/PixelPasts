@@ -1,81 +1,104 @@
 [
   {
-    "name": "userone",
-    "email": "hellokdsfk"
+    "email": "francistesthashed@hotmail.co.uk",
+    "name": "123123",
+    "password": "$2b$10$Y/YIDkP0HjplOGcQFcTQOexpM84eAO1K2AkC7cofCH5C0w4wzrDD6",
+    "address": "sdfnkj"
   },
   {
-    "name": "asdad",
-    "email": "jane@gmail"
+    "email": "martin@hotmail.co.uk",
+    "name": "123123",
+    "password": "$2b$10$QiKG2/Ku4ImQfz9HDFZd.Op8C2Qr8CENCdLaoVSkRQ3BYL.O0OSYC",
+    "address": "sdfnkj"
   },
   {
+    "email": "viktorniv@gmail.com",
     "name": "francis",
-    "email": "francis@gmail"
+    "password": "$2b$10$4SP0EF4YrPdHt2E6Sc1Muutme7pDxLbZKPf7bk0ETLapRihymUeBO",
+    "address": "123 bob "
   },
   {
-    "name": "linnea",
-    "id": "sjöstrand"
+    "email": "trace@gmail",
+    "name": "trace",
+    "password": "$2b$10$bjP9cU5jDsxu7cP4gvD2.eco6LlVv6agzXSIVTOW/lSfO23dNK236",
+    "address": {
+      "city": "",
+      "country": "",
+      "line1": "",
+      "postal_code": "",
+      "state": "",
+      "Country": "testingaddress",
+      "address": "testingaddress",
+      "county": "stockholm",
+      "postcode": "112123"
+    }
   },
   {
-    "email": "francis@gmail.com",
-    "name": "francis jones",
-    "password": "1nspireD",
-    "address": "pipers väg 18y6",
-    "Country": "Sweden ",
-    "county": "solna ",
-    "postcode": "10804"
+    "email": "zanyata@gmail",
+    "name": "sdfnsdh",
+    "password": "$2b$10$KnLMO9v8xS8VvqthKHhL/uo5oe5NSvaQajzysF6KG1g.5w62EQR8S",
+    "address": {
+      "city": "",
+      "country": "",
+      "line1": "",
+      "postal_code": "",
+      "state": "",
+      "Country": "sdujfndjsf",
+      "address": "address",
+      "county": "county",
+      "postcode": "123123"
+    }
   },
   {
-    "email": "francisrjones@hotmail.co.uk",
-    "name": "maximus",
-    "password": "12747",
-    "address": "175 pipers ",
-    "Country": "sweden",
-    "county": "yorkshire ",
-    "postcode": "170 73"
+    "email": "bob@hotmail.co.uk",
+    "name": "123123",
+    "password": "$2b$10$G1cmlKvjUD.w6FERWACEWe6imQUSsar7LuuztZNcWhuatm4J1Urw2",
+    "address": "sdfnkj"
   },
   {
-    "email": "francisrjones@hotmail.co.uk",
-    "name": "maximus",
-    "password": "12747",
-    "address": "175 pipers ",
-    "Country": "sweden",
-    "county": "yorkshire ",
-    "postcode": "170 73"
+    "email": "ow@gmail",
+    "name": "mercy",
+    "password": "$2b$10$B0fSznCwDZR0QCcMXhQDleq2Qw4V/TjE/iFa8Xsjp14k54pCIB27a",
+    "address": {
+      "city": "",
+      "country": "",
+      "address": "sdjnfjsdn",
+      "postcode": "11111",
+      "county": "yorkshire",
+      "Country": "123sdfjn"
+    }
   },
   {
-    "email": "francisrjones@hotmail.co.uk",
-    "name": "francis jones",
-    "password": "123123",
-    "address": "pipersväg ",
-    "Country": "sweden",
-    "county": "yorkshire ",
-    "postcode": "11191221"
+    "email": "francisjones@gmail",
+    "name": "franicsj",
+    "password": "$2b$10$VoXWnd1ro2EG/bGLCd/lTuB.kXjkLQHcEEs3j7d77h.uhpeyEs.Gy",
+    "address": {
+      "country": "sweden",
+      "address": "mårdstigen ",
+      "postcode": "17073",
+      "county": "solna "
+    }
   },
   {
-    "email": "francisrjones@hotmail.co.uk",
-    "name": "max",
-    "password": "123123",
-    "address": "123",
-    "Country": "sheffield",
-    "county": "sheffield",
-    "postcode": "123"
+    "email": "linnea123@hotmail",
+    "name": "linnea jones",
+    "password": "$2b$10$1x.h2.jkQ4WXJHJHcsRTgul.rXiLpx.tXQPCX9r75XWBD3yluxNi6",
+    "address": {
+      "country": "sweden",
+      "address": "pipersstigen",
+      "postcode": "17071",
+      "state": "Solna"
+    }
   },
   {
-    "email": "sdfs",
-    "name": "sdfsdf",
-    "password": "123123",
-    "address": "sshweir",
-    "Country": "sheffield",
-    "county": "123123",
-    "postcode": "123123"
-  },
-  {
-    "email": "devfrancisjones@gmail.com",
-    "name": "francis jones",
-    "password": "123456",
-    "address": "123 bob street ",
-    "Country": "sweden",
-    "county": "Yorkshire ",
-    "postcode": "111 11"
+    "email": "testingnew@gmail",
+    "name": "testing",
+    "password": "$2b$10$GGcSFsZfDvV7XyiLrdH0jug29t.bcerAHr2Jm2tG3VcXv.D7THEkW",
+    "address": {
+      "country": "test",
+      "address": "123123",
+      "postcode": "123123",
+      "state": "123123"
+    }
   }
 ]

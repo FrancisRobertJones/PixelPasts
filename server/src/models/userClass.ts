@@ -1,4 +1,4 @@
-export class User {
+class User {
     constructor(
         public email: string,
         public name: string,
@@ -7,8 +7,9 @@ export class User {
     ){}
 }
 
-export class Address {
+class Address {
     constructor(
+        public city: string,
         public country: string,
         public address: string,
         public postcode: string,
@@ -16,11 +17,4 @@ export class Address {
     ){}
 }
 
-export class PasswordsComparison {
-    constructor(
-        public password1: string,
-        public password2: string,
-        public passwordsMatch: boolean,
-        public passwordLengthWarning: boolean
-    ){}
-}
+export { User, Address }
