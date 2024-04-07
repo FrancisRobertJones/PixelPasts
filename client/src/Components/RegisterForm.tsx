@@ -46,18 +46,32 @@ const Register = ({ handleToggleRegister }: IRegisterProps) => {
         setUser({ ...user, address: { ...user.address, [e.target.name]: e.target.value } })
     }
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (passwords.passwordsMatch && !passwords.passwordLengthWarning) {
             const newUser = { ...user, password: passwords.password1 }
             try {
-                axios.post("http://localhost:3000/accounts/create-user", newUser)
-                console.log("user created successfully" + newUser)
-                navigate("/")
-                toast.success("Account created successfully")
-                
+                const res = await axios.post("http://localhost:3000/accounts/create-user", newUser)
+
+                if (res.status === 201) {
+                    console.log("user created successfully" + newUser)
+                    navigate("/")
+                    toast.success("Account created successfully")
+                }
             } catch (error) {
-                console.log("problem creating user" + error)
+                if (axios.isAxiosError(error)) {
+                    const response = error.response;
+                    if (response && response.status === 400) {
+                        console.log("User already exists");
+                        toast.error("User already exists");
+                    } else if (response && response.status === 500) {
+                        console.log("Server error");
+                        toast.error("Server error, please try again later.");
+                    } else {
+                        console.log("Unexpected error", error);
+                        toast.error("An unexpected error occurred, please try again.");
+                    }
+                }
             }
         } else {
             alert("Passwords do not match")

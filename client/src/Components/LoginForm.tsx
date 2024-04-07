@@ -1,5 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserCredentials } from '../models/user'
+import { toast } from 'react-toastify'
 
 
 interface ILoginProps {
@@ -7,6 +10,33 @@ interface ILoginProps {
 }
 
 const Login = ({handleToggleRegister}: ILoginProps) => {
+    const [userCredentails, setUserCredentials] = useState(new UserCredentials("", ""))
+    const navigate = useNavigate()
+
+
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault()
+        try {
+        const res = await axios.post("http://localhost:3000/accounts/login", userCredentails)
+        if(res.status === 200) {
+            navigate("/")
+            toast.success("You have been logged in!")
+
+        }} catch(error) {
+            if (axios.isAxiosError(error)) {
+                if (error.response?.status === 401) {
+                    toast.error("User or password incorrect");
+                } else {
+                    toast.error("An error occurred");
+                }
+            }}
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setUserCredentials({...userCredentails, [e.target.name]: e.target.value})
+    }
+
 
     return (
         <section className="bg-gray-50">
@@ -23,14 +53,14 @@ const Login = ({handleToggleRegister}: ILoginProps) => {
                         <form className="space-y-4 md:space-y-6" action="#">
                             <div>
                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                                <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" />
+                                <input onChange={handleChange} type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="youremail@email.com" />
                             </div>
                             <div>
                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-                                <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                                <input onChange={handleChange} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" />
                             </div>
 
-                           <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</button>
+                           <button onClick={handleLogin} type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Login</button>
                             <p className="text-sm font-bold text-gray-800 dark:text-gray-400">
                                 Don't have an account? <span onClick={handleToggleRegister} className="font-medium text-primary-600 hover:underline dark:text-primary-500">Register here</span>
                             </p>

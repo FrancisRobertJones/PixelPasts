@@ -3,14 +3,18 @@ import dotenv from 'dotenv'
 import { stripeRouter } from "./routes/stripe";
 import cors from 'cors'
 import { authRouter } from "./routes/auth";
-import cookieParser from 'cookie-parser'
+import cookieSession from 'cookie-session';
 
 dotenv.config()
 
 const app = express()
 
+app.use(cookieSession({
+    secret: process.env.SESSION_SECRET,
+    maxAge: 60*1000*60
+}))
+
 app.use(express.json())
-app.use(cookieParser())
 app.use(cors())
 
 app.use("/payments", stripeRouter)
