@@ -12,9 +12,9 @@ class Address {
     constructor(
         public city: string,
         public country: string,
-        public address: string,
-        public postcode: string,
-        public state: string
+        public line1: string,
+        public state: string,
+        public postal_code: string,
     ){}
 }
 

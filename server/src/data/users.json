@@ -38,5 +38,89 @@
       "postcode": "111111",
       "state": "texas"
     }
+  },
+  {
+    "ID": "9a0b2023-487d-4051-b321-2f24119c7b25",
+    "email": "newStripeCustomer@hotmail.co.uk",
+    "name": "123",
+    "password": "$2b$10$/yqyQUH3aUcXh2veHhyA1.JZYH1AuXKX8QTpm7maypa3NPzEUtxAG",
+    "address": {
+      "country": "123",
+      "address": "123",
+      "postcode": "123",
+      "state": "123"
+    }
+  },
+  {
+    "ID": "7e02b6bf-33a6-44bb-9562-3f21a02b3f01",
+    "email": "newStripeCustomer2@hotmail.co.uk",
+    "name": "123",
+    "password": "$2b$10$TiXjeXOHlKc773VDsK0HzeBD1D.xG/XulSs5G8.8k1MR8Pan5k3BG",
+    "address": {
+      "country": "123",
+      "address": "123",
+      "postcode": "123",
+      "state": "123"
+    }
+  },
+  {
+    "ID": "ccd10854-14c0-4e81-8a39-6ea869c70473",
+    "email": "newStripeCustomer3@hotmail.co.uk",
+    "name": "123",
+    "password": "$2b$10$tpvSAfJn/f23zwjnIYKswOEXgTm2n9TWb1C7a3RtctLvE7MF402IK",
+    "address": {
+      "country": "123",
+      "address": "123",
+      "postcode": "123",
+      "state": "123"
+    }
+  },
+  {
+    "ID": "cus_Pt4A9wQfXjpCEN",
+    "email": "newStripeCustomer4@hotmail.co.uk",
+    "name": "123",
+    "password": "$2b$10$xAm7gk.2pjjBqhek.ywYWuPrQ0dkrazRTsXzDHIyBd37/u8YVAMhm",
+    "address": {
+      "country": "123",
+      "address": "123",
+      "postcode": "123",
+      "state": "123"
+    }
+  },
+  {
+    "ID": "cus_Pt4CA2e1v5PMTL",
+    "email": "newStripeCustomer5@hotmail.co.uk",
+    "name": "123",
+    "password": "$2b$10$1YbuJgbfufx5XNJo56PMl.dbx3JmDewItJv4LyyfqxDxxurziCU.G",
+    "address": {
+      "country": "123",
+      "address": "123",
+      "postcode": "123",
+      "state": "123"
+    }
+  },
+  {
+    "ID": "cus_Pt4FlCuoc5rCjC",
+    "email": "francisrjones123@hotmail.co.uk",
+    "name": "maximus",
+    "password": "$2b$10$e783mWQGZS0bYWmhIQe3POf9RGzlJ.kkznJPGwOj8epV9RxHOm.4m",
+    "address": {
+      "country": "stockholm",
+      "address": "stockgom",
+      "postcode": "23123123",
+      "state": "sotlm"
+    }
+  },
+  {
+    "ID": "cus_Pt4NrCOkEheZIy",
+    "email": "stripecustomer101@gmail.com",
+    "name": "mazimus",
+    "password": "$2b$10$RHqbYvQKzvPUONNuy9eLt.sbXX0S0p.uS.sN/JDzr1uMrPZRrZ1ye",
+    "address": {
+      "country": "sweden",
+      "line1": "123 bob street ",
+      "postal_code": "111123",
+      "state": "yorkshire "
+    }
   }
 ]

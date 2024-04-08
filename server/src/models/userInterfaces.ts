@@ -8,8 +8,8 @@ interface IUser {
 interface IAddress {
     city: string,
     country: string,
-    address: string,
-    postcode: string,
+    line1: string,
+    postal_code: string,
     state: string
 }
 

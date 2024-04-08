@@ -10,7 +10,7 @@ interface IRegisterProps {
 
 const Register = ({ handleToggleRegister }: IRegisterProps) => {
 
-    const [user, setUser] = useState(new User("", "", "", { country: "", address: "", postcode: "", state: "" }))
+    const [user, setUser] = useState(new User("", "", "", { country: "", line1: "", postal_code: "", state: "" }))
     const [passwords, setPasswords] = useState({ password1: "", password2: "", passwordsMatch: false, passwordLengthWarning: false })
     const navigate = useNavigate()
 
@@ -113,7 +113,7 @@ const Register = ({ handleToggleRegister }: IRegisterProps) => {
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">Address</label>
-                        <input onChange={handleAddressChange} type="text" name="address" id="address" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="123 Bob street" required />
+                        <input onChange={handleAddressChange} type="text" name="line1" id="line1" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="123 Bob street" required />
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">State</label>
@@ -121,7 +121,7 @@ const Register = ({ handleToggleRegister }: IRegisterProps) => {
                     </div>
                     <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900">Post Code</label>
-                        <input onChange={handleAddressChange} type="number" name="postcode" id="postcode" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="111 11" required />
+                        <input onChange={handleAddressChange} type="number" name="postal_code" id="postal_code" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="111 11" required />
                     </div>
                     <div className="flex items-center">
                         <div className="flex items-center h-5">

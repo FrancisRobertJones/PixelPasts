@@ -10,8 +10,8 @@ export class User {
 export class Address {
     constructor(
         public country: string,
-        public address: string,
-        public postcode: string,
+        public line1: string,
+        public postal_code: string,
         public state: string
     ){}
 }
