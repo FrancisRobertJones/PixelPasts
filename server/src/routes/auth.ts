@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
-import { createUser, login } from "../controllers/auth";
+import { createUser, login, authCheck, logout } from "../controllers/auth";
 
 const authRouter = express.Router()
 
@@ -10,6 +10,14 @@ authRouter.post("/create-user", createUser, (request: Request, res: Response, ne
 
 authRouter.post("/login", login, (request: Request, res: Response, next: NextFunction) => {
     console.log("login-user endpoint hit")
+})
+
+authRouter.get("/auth-check", authCheck, (request: Request, res: Response, next: NextFunction) => {
+    console.log("auth-check endpoint hit")
+})
+
+authRouter.get("/logout", logout, (request: Request, res: Response, next: NextFunction) => {
+    console.log("logout endpoint hit")
 })
 
 export { authRouter }

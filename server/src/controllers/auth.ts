@@ -25,11 +25,11 @@ const createUser = async (request: Request, response: Response, next: NextFuncti
 
     if (!customerId) {
         return response.status(500).json({ message: "failed to retrieve customer in stripe ." });
-    } 
+    }
 
-    const updatedUser = new User(customerId, email, name, hashedPassword, address); 
+    const updatedUser = new User(customerId, email, name, hashedPassword, address);
     users.push(updatedUser);
-    
+
     try {
         await createNewUser(users)
         console.log("new user updated successfully")
@@ -60,8 +60,25 @@ const login = async (request: Request, response: Response, next: NextFunction) =
     }
 }
 
+const authCheck = (request: Request, response: Response, next: NextFunction) => {
+    if (request.session && request.session.user) {
+        response.status(201).json({ isAuthenticated: true, user: request.session.user.name })
+    } else {
+        response.status(401).json({ isAuthenticated: false })
+    }
+}
+
+const logout = (request: Request, response: Response, next: NextFunction) => {
+    try {
+        request.session = null
+        response.status(200).json({ message: "sucessfully logged out" })
+    } catch(error) {
+        console.log("problem logging out" + error)
+    }
+}
 
 
 
 
-export { createUser, login }
+
+export { createUser, login, authCheck, logout }

@@ -18,7 +18,7 @@ const Login = ({handleToggleRegister}: ILoginProps) => {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
         try {
-        const res = await axios.post("http://localhost:3000/accounts/login", userCredentails)
+        const res = await axios.post("http://localhost:3000/accounts/login", userCredentails, { withCredentials: true })
         if(res.status === 200) {
             navigate("/")
             toast.success("You have been logged in!")
