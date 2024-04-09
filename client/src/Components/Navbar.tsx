@@ -4,14 +4,14 @@ import { AuthContext } from "../context/authContext"
 
 const Navbar = () => {
 
-  const loggedIn  = useContext(AuthContext)
+  const {isLoggedIn, logOut} = useContext(AuthContext)
 
   return (
     <div className="navbar bg-neutral">
       <div className="flex-1">
         <a href="/"><img src="../../public/PPlogo.png" className="w-[70px] ml-6"></img></a>
       </div>
-      {loggedIn ? <h1>user is logged in</h1> : <h1>user is not logged in</h1>}
+      {isLoggedIn ? <h1>user is logged in</h1> : <h1>user is not logged in</h1>}
       <div className="flex-none">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
