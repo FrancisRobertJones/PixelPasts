@@ -10,4 +10,5 @@ export interface ICartContext {
 export const CartContext = createContext<ICartContext>({
     cartItems: [],
     dispatchCart: () => {}
+  
 })

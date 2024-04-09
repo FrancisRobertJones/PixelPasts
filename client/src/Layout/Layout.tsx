@@ -4,18 +4,18 @@ import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AuthContext, IAuthContext } from '../context/authContext';
-import { useEffect, useReducer, useState } from 'react';
+import { AuthContext } from '../context/authContext';
+import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import { AuthActionType, AuthReducer } from '../reducers/authReducer';
 import { CartContext } from '../context/cartContext';
-import { CartReducer } from '../reducers/cartReducer';
+import { useCartReducerWithLS } from '../customhooks/useCartReducerWithLS';
 
 
 
 const Layout = () => {
   const [isLoggedIn, dispatchAuth] = useReducer(AuthReducer, false)
-  const [cartItems, dispatchCart] = useReducer(CartReducer, [])
+  const [cartItems, dispatchCart] = useCartReducerWithLS()
 
   const logOut = async () => {
     try {
@@ -45,6 +45,7 @@ const Layout = () => {
   useEffect(() => {
     checkAuth()
   }, [])
+
 
   return (
     <div className=''>
