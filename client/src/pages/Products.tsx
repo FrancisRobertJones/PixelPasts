@@ -28,12 +28,7 @@ const Products = () => {
                  <div className="grid grid-cols-3">
                     {products.map((product) =>
                         <ProductCard
-                            key={product.id}
-                            images={product.images}
-                            name={product.name}
-                            description={product.description}
-                            default_price={product.default_price}
-                            id={product.id}
+                            product={product}
                         />
                     )}
                 </div> 

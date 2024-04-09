@@ -1,10 +1,13 @@
 import { useContext } from "react"
 import { logOut } from "../utils/logout"
 import { AuthContext } from "../context/authContext"
+import { CartContext } from "../context/cartContext"
+import { Link } from "react-router-dom"
 
 const Navbar = () => {
 
-  const {isLoggedIn, logOut} = useContext(AuthContext)
+  const { isLoggedIn, logOut } = useContext(AuthContext)
+  const { cartItems } = useContext(CartContext)
 
   return (
     <div className="navbar bg-neutral">
@@ -12,6 +15,8 @@ const Navbar = () => {
         <a href="/"><img src="../../public/PPlogo.png" className="w-[70px] ml-6"></img></a>
       </div>
       {isLoggedIn ? <h1>user is logged in</h1> : <h1>user is not logged in</h1>}
+      {cartItems.length > 0 ? <h1>cart has items</h1> : <h1>cart is empty</h1>}
+      <h1>"you have" {cartItems.length} "in the cart"</h1>
       <div className="flex-none">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
@@ -25,7 +30,7 @@ const Navbar = () => {
               <span className="font-bold text-lg">8 Items</span>
               <span className="text-white">Subtotal: $999</span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
+                <Link to={"/cart"} ><button className="btn btn-primary btn-block">View cart</button></Link>
               </div>
             </div>
           </div>

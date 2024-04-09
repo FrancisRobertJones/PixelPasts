@@ -1,18 +1,18 @@
-export interface IAction {
-    type: ActionType;
+export interface IAuthAction {
+    type: AuthActionType;
     payload: boolean
 }
 
-export enum ActionType {
+export enum AuthActionType {
     LOGIN,
     LOGOUT,
 }
 
-export const AuthReducer = (isLoggedIn: boolean, action: IAction) => {
+export const AuthReducer = (isLoggedIn: boolean, action: IAuthAction) => {
     switch (action.type){
-        case ActionType.LOGIN:
+        case AuthActionType.LOGIN:
         return true
-        case ActionType.LOGOUT:
+        case AuthActionType.LOGOUT:
         return false
         default:  return isLoggedIn
     } 
