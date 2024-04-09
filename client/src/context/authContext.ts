@@ -1,17 +1,16 @@
-import { createContext } from "react";
+import { Dispatch, createContext } from "react";
+import { IAction } from "../reducers/authReducer";
 
 export interface IAuthContext {
     isLoggedIn: boolean,
-    loggedInStatus: (status: boolean) => void
+    dispatch: Dispatch<IAction>
     logOut: () => void
-    logIn: () => void
 }
 
 
 
 export const AuthContext = createContext<IAuthContext>({
     isLoggedIn: false,
-    loggedInStatus: (status: boolean) => {},
     logOut: () => {},
-    logIn: () => {}
+    dispatch: () => {}
 })
