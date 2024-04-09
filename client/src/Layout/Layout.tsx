@@ -5,46 +5,34 @@ import Footer from '../Components/Footer'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext, IAuthContext } from '../context/authContext';
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
-import { Auth } from '../models/auth';
+import { ActionType, AuthReducer } from '../reducers/authReducer';
 
 
 
 const Layout = () => {
-  const [auth, setAuth] = useState<IAuthContext>({
-    isLoggedIn: false,
-    loggedInStatus: () => {},
-    logOut : () => {},
-    logIn: () => {}
-  })
+const [isLoggedIn, dispatch] = useReducer(AuthReducer, false)
 
-  auth.loggedInStatus = (status: boolean) => {
-    setAuth({ ...auth, isLoggedIn: status })
-  }
-
-  auth.logOut = async () => {
+  const logOut = async () => {
     try {
       const res = await axios.get("http://localhost:3000/accounts/logout", { withCredentials: true })
       console.log(res.data)
       toast.success("you have been logged out")
-      auth.loggedInStatus(false)
+      dispatch({ type: ActionType.LOGOUT, payload: false})
     } catch (err) {
+      toast.error("logout failed")
       console.log(err)
     }
   }
-
-  auth.logIn = async () => {
-    auth.loggedInStatus(true)
-  }
-
+  
   const checkAuth = async () => {
     try {
       const res = await axios.get("http://localhost:3000/accounts/auth-check", { withCredentials: true })
       if (res.data.isAuthenticated) {
-        auth.loggedInStatus(true)
+        dispatch({ type: ActionType.LOGIN, payload: true})
       } else {
-        auth.loggedInStatus(false)
+        dispatch({ type: ActionType.LOGOUT, payload: false})
       }
     } catch (err) {
       console.log(err)
@@ -57,7 +45,7 @@ const Layout = () => {
 
   return (
     <div className=''>
-      <AuthContext.Provider value={auth}>
+      <AuthContext.Provider value={{ isLoggedIn, dispatch, logOut }}>
         <ToastContainer />
         <Navbar />
         <Container>
