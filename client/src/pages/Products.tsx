@@ -1,31 +1,31 @@
 import { useEffect, useState } from "react"
 import ProductCard from "../Components/ProductCard"
 import axios from "axios"
-import { IProduct } from "../models/products"
+import { IProduct, IProductRes } from "../models/products"
 
 const Products = () => {
     const [products, setProducts] = useState<IProduct[]>([])
 
     useEffect(() => {
-            const fetchProducts = async () => {
-                try {
-                const data = await axios.get("http://localhost:3000/products/fetch-products")
-                console.log(data.data + "this is thje product data")
-                setProducts(data.data)
-                fetchProducts()
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.get<IProductRes>("http://localhost:3000/products/fetch-products")
+                console.log("here is the product res data", response.data.data);
+                setProducts(response.data.data)
             } catch (error) {
-                console.log(error)
+                console.log("failed to fetch products" + error)
             }
-            }
+        }
+        fetchProducts()
+    }, [])
 
-    }, []) 
+
 
     return (
         <div className="flex flex-col">
             <h1 className="mb-12 text-white">Top sellers</h1>
             <div className="flex flex-col items-center">
-
-                <div className="grid grid-cols-3">
+                 <div className="grid grid-cols-3">
                     {products.map((product) =>
                         <ProductCard
                             key={product.id}
@@ -36,7 +36,7 @@ const Products = () => {
                             id={product.id}
                         />
                     )}
-                </div>
+                </div> 
             </div>
         </div>
     )
