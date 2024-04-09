@@ -14,7 +14,7 @@ import { Auth } from '../models/auth';
 const Layout = () => {
   const [auth, setAuth] = useState<IAuthContext>({
     isLoggedIn: false,
-    loggedInStatus: () => { },
+    loggedInStatus: () => {},
     logOut : () => {},
     logIn: () => {}
   })
