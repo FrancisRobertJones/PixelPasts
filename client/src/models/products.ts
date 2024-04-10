@@ -1,6 +1,7 @@
 export interface IProduct {
     name: string,
     default_price: {
+        id: string,
         unit_amount: number
     },
     images: string[],
@@ -26,4 +27,11 @@ export interface IProductRes {
 
 export interface IPaymentConfirmation {
         url: string
+}
+
+export class CartItemForStripe {
+    constructor(
+        public quantity: number, 
+        public default_price: string
+    ){}
 }

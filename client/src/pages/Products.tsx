@@ -10,7 +10,6 @@ const Products = () => {
         const fetchProducts = async () => {
             try {
                 const response = await axios.get<IProductRes>("http://localhost:3000/products/fetch-products")
-                console.log("here is the product res data", response.data.data);
                 setProducts(response.data.data)
             } catch (error) {
                 console.log("failed to fetch products" + error)
@@ -20,6 +19,7 @@ const Products = () => {
     }, [])
 
 
+  
 
     return (
         <div className="flex flex-col">

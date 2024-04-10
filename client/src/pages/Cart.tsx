@@ -1,14 +1,23 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../context/cartContext'
 import CheckoutProduct from '../Components/CheckoutProductCard'
 import axios from 'axios'
-import { IPaymentConfirmation } from '../models/products'
+import { CartItemForStripe, IPaymentConfirmation } from '../models/products'
 
 const Cart = () => {
   const { cartItems } = useContext(CartContext)
+  const [cartItemsForStripe, setCartItemsForStripe] = useState<CartItemForStripe[]>()
+
+
+  useEffect(() => {
+    const updatedCartItemsForStripe = cartItems.map(cartItem => 
+      new CartItemForStripe(cartItem.quantity, cartItem.product.default_price.id)
+    );
+    setCartItemsForStripe(updatedCartItemsForStripe);
+  }, [cartItems])
 
   const handleCheckout = async () => {
-    const res = await axios.get("http://localhost:3000/payments/create-session")
+    const res = await axios.post("http://localhost:3000/payments/create-session", cartItemsForStripe)
     const stripeCheckout = res.data.url
     window.location = stripeCheckout
   }

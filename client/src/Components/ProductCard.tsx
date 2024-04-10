@@ -12,14 +12,6 @@ const ProductCard = ({ product }: IProductCardProps) => {
 
     const { dispatchCart } = useContext(CartContext)
 
-    const [loggedIn, setLoggedIn] = React.useState(false)
-
-    const handleLogginStatus = () => {
-        if (loggedIn) {
-
-        }
-    }
-
 
     return (
         <div key={product.id} className="card h-[90%] w-96 bg-white shadow-xl text-black mx-6">
