@@ -14,19 +14,17 @@ const Cart = () => {
   const { authedUser } = useContext(AuthContext)
 
 
-
   useEffect(() => {
     const updatedCartItemsForStripe = cartItems.map(cartItem =>
       new CartItemForStripe(cartItem.quantity, cartItem.product.default_price.id)
     );
-    setCartItemsForStripe(updatedCartItemsForStripe);
-  }, [cartItems])
+  
+    if (authedUser && updatedCartItemsForStripe.length > 0) {
+      setOrderData(new OrderData(authedUser.User, updatedCartItemsForStripe));
+    }
+  }, [cartItems, authedUser]);
 
-  useEffect(() => {
-    if (cartItemsForStripe)
-      setOrderData(new OrderData(authedUser.User, cartItemsForStripe));
-    console.log(authedUser)
-  }, [cartItemsForStripe])
+
 
 
   const handleCheckout = async () => {

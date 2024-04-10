@@ -5,6 +5,7 @@ import { IOrderData, IOrderItems, IOrderUser } from "../models/orders"
 
 const createCheckoutSession = async (request: Request, response: Response) => {
     const stripe = initStripe()
+    console.log(request.body)
     const orderData: IOrderData = request.body
     const cartItems: IOrderItems[] = orderData.orderItems
     const userData: IOrderUser = orderData.orderUser
@@ -23,7 +24,7 @@ const createCheckoutSession = async (request: Request, response: Response) => {
         cancel_url: "http://localhost.5173"
     })
 
-    response.status(200).json({ url: session.url, sessionID: session.id })
+    response.status(200).json({ url: session.url, sessionID: session.id }) 
 }
 
 
