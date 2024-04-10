@@ -19,6 +19,7 @@ const Cart = () => {
   const handleCheckout = async () => {
     const res = await axios.post("http://localhost:3000/payments/create-session", cartItemsForStripe)
     const stripeCheckout = res.data.url
+    localStorage.setItem("sessionid", res.data.sessionID)
     window.location = stripeCheckout
   }
   return (

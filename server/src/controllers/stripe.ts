@@ -19,7 +19,7 @@ const createCheckoutSession = async (request: Request, response: Response) => {
         cancel_url: "http://localhost.5173"
     })
 
-    response.status(200).json({ url: session.url })
+    response.status(200).json({ url: session.url, sessionID: session.id })
 }
 
 
