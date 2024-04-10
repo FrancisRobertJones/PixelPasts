@@ -17,11 +17,24 @@ export const CartReducer = (cartItems: ICartItem[], action: ICartAction) => {
 
         const itemThatsAlreadyAdded = clonedCart.find((item) => item.product.id === action.payload.id)
         if (itemThatsAlreadyAdded) {
-            itemThatsAlreadyAdded.quantity++
+            itemThatsAlreadyAdded.quantity ++
         } else {
             clonedCart.push(new CartProduct(1, action.payload))
         }
         return clonedCart
     }
-        return cartItems;
+
+    if (action.type === CartActionType.REMOVEFROMCART) {
+        const clonedCart = [...cartItems]
+        const selectedItemIndex = clonedCart.findIndex((item) => item.product.id === action.payload.id)
+
+        if (clonedCart[selectedItemIndex].quantity >= 2) {
+            clonedCart[selectedItemIndex] = { ...clonedCart[selectedItemIndex], quantity: clonedCart[selectedItemIndex].quantity - 1 }
+        } else if (clonedCart[selectedItemIndex].quantity === 1) {
+            clonedCart.splice(selectedItemIndex, 1)
+        }
+
+        return clonedCart
+    }
+    return cartItems;
 }

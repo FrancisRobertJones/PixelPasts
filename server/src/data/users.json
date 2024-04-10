@@ -28,18 +28,6 @@
     }
   },
   {
-    "ID": "e82bc48d-3890-4243-ae18-1cf6b3c2c57e",
-    "email": "francisrjones@hotmail.co.uk",
-    "name": "maximus",
-    "password": "$2b$10$AxGIg1CGRRhlSOnVU0CzWeCcxQNOfLv6A51O5SsUh5LEpP4uIeHo6",
-    "address": {
-      "country": "sweden",
-      "address": "pipers",
-      "postcode": "111111",
-      "state": "texas"
-    }
-  },
-  {
     "ID": "9a0b2023-487d-4051-b321-2f24119c7b25",
     "email": "newStripeCustomer@hotmail.co.uk",
     "name": "123",
@@ -121,6 +109,18 @@
       "line1": "123 bob street ",
       "postal_code": "111123",
       "state": "yorkshire "
+    }
+  },
+  {
+    "ID": "cus_Ptn0nc6gk7NsfZ",
+    "email": "francisrjones@hotmail.co.uk",
+    "name": "Maximus Decimus Maridius ",
+    "password": "$2b$10$uGauyat8mtY7v.i1vXGGHOzJ1j0f1VqWO.Al5n9/t.zXRh8O03BoG",
+    "address": {
+      "country": "Sweden",
+      "line1": "173 Pipersävg",
+      "postal_code": "17073",
+      "state": "Solna"
     }
   }
 ]

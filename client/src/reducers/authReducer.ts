@@ -1,19 +1,23 @@
-export interface IAuthAction {
-    type: AuthActionType;
-    payload: boolean
-}
+    import { AuthResponse, AuthState } from "../models/auth";
+    import { User } from "../models/user";
 
-export enum AuthActionType {
-    LOGIN,
-    LOGOUT,
-}
+    export interface IAuthAction {
+        type: AuthActionType;
+        payload: AuthResponse
+    }
 
-export const AuthReducer = (isLoggedIn: boolean, action: IAuthAction) => {
-    switch (action.type){
-        case AuthActionType.LOGIN:
-        return true
-        case AuthActionType.LOGOUT:
-        return false
-        default:  return isLoggedIn
-    } 
-}
+    export enum AuthActionType {
+        LOGIN,
+        LOGOUT,
+    }
+
+
+    export const AuthReducer = (state: AuthState, action: IAuthAction) => {
+        switch (action.type) {
+            case AuthActionType.LOGIN:
+                return new AuthState(true, action.payload.user)
+            case AuthActionType.LOGOUT:
+                return new AuthState(false, null)
+            default: return new AuthState(false, null)
+        }
+    }
