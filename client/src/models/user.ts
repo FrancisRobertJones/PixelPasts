@@ -1,5 +1,8 @@
+import { CartItemForStripe } from "./products";
+
 export class User {
     constructor(
+        public ID: string,
         public email: string,
         public name: string,
         public password: string,
@@ -29,5 +32,12 @@ export class UserCredentials {
     constructor(
         public email: string,
         public password: string
+    ){}
+}
+
+export class OrderData {
+    constructor(
+        public UserData: User | null,
+        public cartItemsForStripe: CartItemForStripe[] | null
     ){}
 }

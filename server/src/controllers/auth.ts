@@ -62,7 +62,7 @@ const login = async (request: Request, response: Response, next: NextFunction) =
 
 const authCheck = (request: Request, response: Response, next: NextFunction) => {
     if (request.session && request.session.user) {
-        const userObjectToFrontend = {...request.session.user, password: "", ID: ""}
+        const userObjectToFrontend = {...request.session.user, password: ""}
         response.status(201).json({ isAuthenticated: true, user: userObjectToFrontend })
     } else {
         response.status(401).json({ isAuthenticated: false })

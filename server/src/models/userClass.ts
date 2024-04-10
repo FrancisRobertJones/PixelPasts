@@ -8,7 +8,7 @@ class User {
     ){}
 }
 
-class Address {
+ class Address {
     constructor(
         public city: string,
         public country: string,

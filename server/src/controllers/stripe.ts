@@ -1,12 +1,16 @@
 import { NextFunction, Request, Response } from "express"
 import { initStripe } from "../util/stripe/initStripe"
-import { CartItemForStripe } from "../models/productInterface"
+import { IOrderData, IOrderItems, IOrderUser } from "../models/orders"
 
 
 const createCheckoutSession = async (request: Request, response: Response) => {
     const stripe = initStripe()
-    const cartItems: CartItemForStripe[] = request.body
-    console.log("here are the cart items we'll send to stripe!", cartItems)
+    const orderData: IOrderData = request.body
+    const cartItems: IOrderItems[] = orderData.orderItems
+    const userData: IOrderUser = orderData.orderUser
+
+
+    console.log("here are the cart items we'll send to stripe!", cartItems, "and here is the user", userData)
 
     const session = await stripe.checkout.sessions.create({
         mode: "payment",

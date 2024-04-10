@@ -2,26 +2,49 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CartContext } from '../context/cartContext'
 import CheckoutProduct from '../Components/CheckoutProductCard'
 import axios from 'axios'
-import { CartItemForStripe, IPaymentConfirmation } from '../models/products'
+import { CartItemForStripe } from '../models/products'
+import { AuthContext } from '../context/authContext'
+import { OrderData } from '../models/user'
 
 const Cart = () => {
   const { cartItems } = useContext(CartContext)
   const [cartItemsForStripe, setCartItemsForStripe] = useState<CartItemForStripe[]>()
+  const [orderData, setOrderData] = useState<OrderData>(new OrderData(null, null))
+
+  const { authedUser } = useContext(AuthContext)
+
 
 
   useEffect(() => {
-    const updatedCartItemsForStripe = cartItems.map(cartItem => 
+    const updatedCartItemsForStripe = cartItems.map(cartItem =>
       new CartItemForStripe(cartItem.quantity, cartItem.product.default_price.id)
     );
     setCartItemsForStripe(updatedCartItemsForStripe);
   }, [cartItems])
 
+  useEffect(() => {
+    if (cartItemsForStripe)
+      setOrderData(new OrderData(authedUser.User, cartItemsForStripe));
+    console.log(authedUser)
+  }, [cartItemsForStripe])
+
+
   const handleCheckout = async () => {
-    const res = await axios.post("http://localhost:3000/payments/create-session", cartItemsForStripe)
-    const stripeCheckout = res.data.url
-    localStorage.setItem("sessionid", res.data.sessionID)
-    window.location = stripeCheckout
+    try {
+      const res = await axios.post("http://localhost:3000/payments/create-session", orderData)
+      const stripeCheckout = res.data.url
+      localStorage.setItem("sessionID", JSON.stringify(res.data.sessionID))
+    } catch (error) {
+      console.log("issues submitting orderdata", error)
+    }
+    /* window.location = stripeCheckout */
   }
+
+
+  useEffect(() => {
+    console.log(orderData)
+  }, [orderData])
+
   return (
 
     <div>
