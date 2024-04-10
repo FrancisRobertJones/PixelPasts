@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { UserCredentials } from '../models/user'
 import { toast } from 'react-toastify'
 import { AuthContext } from '../context/authContext'
-import { ActionType } from '../reducers/authReducer'
+import { AuthActionType } from '../reducers/authReducer'
 
 
 interface ILoginProps {
@@ -15,7 +15,7 @@ const Login = ({ handleToggleRegister }: ILoginProps) => {
     const [userCredentails, setUserCredentials] = useState(new UserCredentials("", ""))
     const navigate = useNavigate()
 
-    const { dispatch } = useContext(AuthContext)
+    const { dispatchAuth } = useContext(AuthContext)
 
 
 
@@ -24,7 +24,7 @@ const Login = ({ handleToggleRegister }: ILoginProps) => {
         try {
             const res = await axios.post("http://localhost:3000/accounts/login", userCredentails, { withCredentials: true })
             if (res.status === 200) {
-                dispatch({ type: ActionType.LOGIN , payload: true })
+                dispatchAuth({ type: AuthActionType.LOGIN , payload: true })
                 navigate("/")
                 toast.success("You have been logged in!")
             }

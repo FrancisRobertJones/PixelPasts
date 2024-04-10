@@ -13,6 +13,14 @@ export interface ICartItem {
     product: IProduct   
 }
 
+export class CartProduct {
+    constructor(
+    public quantity: number,
+    public product: IProduct 
+    ){}
+}
+
 export interface IProductRes {
     data: IProduct[]
 }
+

@@ -1,7 +1,13 @@
-export class Auth {
+import { User } from "./user";
+
+export class AuthState {
     constructor(
         public loggedIn: boolean,
-        public logOut: () => void,
-        public logIn: () => void
+        public User: User | null
     ){}
+}
+
+export interface AuthResponse {
+    isAuthenticated: boolean,
+    user: User | null
 }
