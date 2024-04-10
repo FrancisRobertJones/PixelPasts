@@ -24,3 +24,6 @@ export interface IProductRes {
     data: IProduct[]
 }
 
+export interface IPaymentConfirmation {
+        url: string
+}

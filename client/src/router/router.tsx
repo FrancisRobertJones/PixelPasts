@@ -7,6 +7,7 @@ import Products from "../pages/Products";
 import Auth from "../pages/Auth";
 import Profile from "../pages/Profile";
 import Cart from "../pages/Cart";
+import Success from "../pages/Success";
 
 export const router = createBrowserRouter([
     {
@@ -33,7 +34,11 @@ export const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <Cart />,
+            },        {
+                path: "/success",
+                element: <Success />,
             }
+
         ],
     },
 ]);
