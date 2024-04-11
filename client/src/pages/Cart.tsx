@@ -32,10 +32,11 @@ const Cart = () => {
       const res = await axios.post("http://localhost:3000/payments/create-session", orderData)
       const stripeCheckout = res.data.url
       localStorage.setItem("sessionID", JSON.stringify(res.data.sessionID))
+      window.location = stripeCheckout
     } catch (error) {
       console.log("issues submitting orderdata", error)
     }
-    /* window.location = stripeCheckout */
+
   }
 
 

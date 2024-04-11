@@ -1,14 +1,14 @@
 import { NextFunction, Request, Response } from "express"
 import { initStripe } from "../util/stripe/initStripe"
-import { IOrderData, IOrderItems, IOrderUser } from "../models/orders"
+import { ICartItemsForStripe, IOrderData, IUserData,  } from "../models/orders"
 
 
 const createCheckoutSession = async (request: Request, response: Response) => {
     const stripe = initStripe()
     console.log(request.body)
     const orderData: IOrderData = request.body
-    const cartItems: IOrderItems[] = orderData.orderItems
-    const userData: IOrderUser = orderData.orderUser
+    const cartItems: ICartItemsForStripe[] = orderData.cartItemsForStripe
+    const userData: IUserData = orderData.UserData
 
 
     console.log("here are the cart items we'll send to stripe!", cartItems, "and here is the user", userData)
@@ -19,7 +19,7 @@ const createCheckoutSession = async (request: Request, response: Response) => {
             price: item.default_price,
             quantity: item.quantity
         })),
-        customer_email: "theemailgoeshere@gmail.com",
+        customer_email: userData.email,
         success_url: "http://localhost:5173/success",
         cancel_url: "http://localhost.5173"
     })

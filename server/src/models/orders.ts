@@ -1,23 +1,23 @@
 import { Address } from "./userClass";
 
 interface IOrderData {
-    orderUser: IOrderUser,
-    orderItems: IOrderItems[]
+    UserData: IUserData,
+    cartItemsForStripe: ICartItemsForStripe[]
 }
 
-interface IOrderUser {
+interface IUserData {
     ID: string,
     email: string,
     name: string,
     password: string,
     address: Address
 }
-interface IOrderItems {
+interface ICartItemsForStripe {
     quantity: number,
     default_price: string
 }
 
 
 export {
-    IOrderData, IOrderUser, IOrderItems
+    IOrderData, IUserData, ICartItemsForStripe
 }
