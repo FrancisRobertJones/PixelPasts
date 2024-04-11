@@ -1,0 +1,24 @@
+[
+  {
+    "id": "cs_test_b1oAEdB3XUkE2AIzhrA48oVNeMz5dC2qjVJPMODoKSseQpttzNTNSMgpC8",
+    "customerName": "Maximus Decimus Maridius",
+    "products": [
+      {
+        "productId": "li_1P4NSrRpeYHWrPIgqBaFJ5lr",
+        "description": "Pokemon Red",
+        "quantity": 11
+      },
+      {
+        "productId": "li_1P4NSrRpeYHWrPIgtiI0Eag1",
+        "description": "Gameboy Colour",
+        "quantity": 1
+      },
+      {
+        "productId": "li_1P4NSrRpeYHWrPIgmANqCtUg",
+        "description": "Sonic",
+        "quantity": 1
+      }
+    ],
+    "totalCost": 8300
+  }
+]

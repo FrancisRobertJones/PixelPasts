@@ -26,7 +26,7 @@ const ProductCard = ({ product }: IProductCardProps) => {
                 <h2 className="card-title">{product.name}</h2>
                 <p>{product.description}</p>
                 <div className='flex space-between mt-4'>
-                    <p className='align-center'>{product.default_price.unit_amount / 100 } SEK</p>
+                    <p className='align-center'>{product.default_price.unit_amount / 100} SEK</p>
                     <div className="card-actions">
                         <button onClick={() => addToCart(product.name)} className="btn btn-primary">Buy Now</button>
                     </div>

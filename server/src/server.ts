@@ -5,6 +5,7 @@ import cors from 'cors'
 import { authRouter } from "./routes/auth";
 import cookieSession from 'cookie-session';
 import { productsRouter } from "./routes/products";
+import { webHookRouter } from "./routes/confirmationwebhook";
 
 dotenv.config()
 
@@ -20,12 +21,10 @@ app.use(cookieSession({
     maxAge: 60 * 1000 * 60
 }))
 
-app.use(express.json())
-
-
-app.use("/payments", stripeRouter)
-app.use("/accounts", authRouter)
-app.use("/products", productsRouter)
+app.use("/payments", express.json(), stripeRouter)
+app.use("/accounts", express.json(), authRouter)
+app.use("/products", express.json(),  productsRouter)
+app.use("/verify", express.raw(), webHookRouter)
 
 
 app.listen(3000, () => {

@@ -11,6 +11,7 @@ const Products = () => {
             try {
                 const response = await axios.get<IProductRes>("http://localhost:3000/products/fetch-products")
                 setProducts(response.data.data)
+                console.log("im fetching products through backend", products)
             } catch (error) {
                 console.log("failed to fetch products" + error)
             }

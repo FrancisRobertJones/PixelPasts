@@ -12,12 +12,35 @@ interface IUserData {
     password: string,
     address: Address
 }
+
 interface ICartItemsForStripe {
     quantity: number,
     default_price: string
 }
 
-
-export {
-    IOrderData, IUserData, ICartItemsForStripe
+class OrderProduct {
+    constructor(
+        public productId: string,
+        public description: string,
+        public quantity: number | null
+    ){}
 }
+
+class User {
+    constructor(
+        public productId: string,
+        public description: string,
+    ){}
+}
+
+class Order {
+    constructor(
+        public id: string,
+        public customerName: string,
+        public products: OrderProduct[], 
+        public totalCost: number
+    ){}
+}
+
+
+export { IOrderData, IUserData, ICartItemsForStripe, Order, OrderProduct }
