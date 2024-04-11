@@ -6,6 +6,7 @@ import { authRouter } from "./routes/auth";
 import cookieSession from 'cookie-session';
 import { productsRouter } from "./routes/products";
 import { webHookRouter } from "./routes/confirmationwebhook";
+import { profileRouter } from "./routes/profile";
 
 dotenv.config()
 
@@ -25,6 +26,7 @@ app.use("/payments", express.json(), stripeRouter)
 app.use("/accounts", express.json(), authRouter)
 app.use("/products", express.json(),  productsRouter)
 app.use("/verify", express.raw(), webHookRouter)
+app.use("/profile", express.json(), profileRouter)
 
 
 app.listen(3000, () => {

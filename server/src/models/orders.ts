@@ -36,6 +36,7 @@ class User {
 class Order {
     constructor(
         public id: string,
+        public email: string,
         public customerName: string,
         public products: OrderProduct[], 
         public totalCost: number

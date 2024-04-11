@@ -32,7 +32,7 @@ const confirmationWebhook = (request: Request, response: Response, next: NextFun
                 const session = event.data.object;
                 const lineItems = await stripe.checkout.sessions.listLineItems(session.id)
                 const OrderItems = lineItems.data.map((item) => new OrderProduct(item.id, item.description, item.quantity))
-                const newOrder = new Order(session.id, session.customer_details.name, OrderItems, Number(session.amount_total) / 100)
+                const newOrder = new Order(session.id, session.customer_details.email, session.customer_details.name, OrderItems, Number(session.amount_total) / 100)
 
                 try {
                     const updatedOrdersJSON = await fs.readFile(ORDER_DATA_FILE_PATH, 'utf8')
