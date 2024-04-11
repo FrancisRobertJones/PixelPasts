@@ -6,7 +6,6 @@ interface IUser {
 }
 
 interface IAddress {
-    city: string,
     country: string,
     line1: string,
     postal_code: string,

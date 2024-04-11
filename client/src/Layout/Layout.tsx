@@ -35,6 +35,7 @@ const Layout = () => {
       const res = await axios.get("http://localhost:3000/accounts/auth-check", { withCredentials: true })
       if (res.data.isAuthenticated) {
         const userData = res.data
+        console.log(userData, "this is the userdata")
         dispatchAuth({ type: AuthActionType.LOGIN, payload: userData })
         console.log(res.data, "this is the auth data from rendering")
       } else {
@@ -53,7 +54,7 @@ const Layout = () => {
   return (
     <div className=''>
       <CartContext.Provider value={{ cartItems, dispatchCart }}>
-        <AuthContext.Provider value={{ dispatchAuth, logOut, authedUser }}>
+        <AuthContext.Provider value={{ dispatchAuth, logOut, authedUser, checkAuth }}>
           <ToastContainer />
           <Navbar />
           <Container>

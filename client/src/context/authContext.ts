@@ -5,8 +5,9 @@ import { AuthState } from "../models/auth";
 
 export interface IAuthContext {
     authedUser: AuthState,
-    dispatchAuth: Dispatch<IAuthAction>
-    logOut: () => void
+    dispatchAuth: Dispatch<IAuthAction>,
+    logOut: () => void,
+    checkAuth: () => void
 }
 
 
@@ -14,5 +15,6 @@ export interface IAuthContext {
 export const AuthContext = createContext<IAuthContext>({
     authedUser: new AuthState(false, null),
     logOut: () => {},
-    dispatchAuth: () => {}
+    dispatchAuth: () => {},
+    checkAuth: () => {}
 })

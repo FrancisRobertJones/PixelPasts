@@ -15,7 +15,7 @@ const Login = ({ handleToggleRegister }: ILoginProps) => {
     const [userCredentails, setUserCredentials] = useState(new UserCredentials("", ""))
     const navigate = useNavigate()
 
-    const { dispatchAuth } = useContext(AuthContext)
+    const { checkAuth } = useContext(AuthContext)
 
 
 
@@ -24,7 +24,8 @@ const Login = ({ handleToggleRegister }: ILoginProps) => {
         try {
             const res = await axios.post("http://localhost:3000/accounts/login", userCredentails, { withCredentials: true })
             if (res.status === 200) {
-                dispatchAuth({ type: AuthActionType.LOGIN , payload: true })
+                console.log("this is the login response", res.data)
+                checkAuth()
                 navigate("/")
                 toast.success("You have been logged in!")
             }
