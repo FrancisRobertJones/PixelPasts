@@ -5,6 +5,7 @@ import axios from 'axios'
 import { CartItemForStripe } from '../models/products'
 import { AuthContext } from '../context/authContext'
 import { OrderData } from '../models/user'
+import { toast } from 'react-toastify'
 
 const Cart = () => {
   const { cartItems } = useContext(CartContext)
@@ -18,7 +19,7 @@ const Cart = () => {
     const updatedCartItemsForStripe = cartItems.map(cartItem =>
       new CartItemForStripe(cartItem.quantity, cartItem.product.default_price.id)
     );
-  
+
     if (authedUser && updatedCartItemsForStripe.length > 0) {
       setOrderData(new OrderData(authedUser.User, updatedCartItemsForStripe));
     }
@@ -28,13 +29,18 @@ const Cart = () => {
 
 
   const handleCheckout = async () => {
-    try {
-      const res = await axios.post("http://localhost:3000/payments/create-session", orderData)
-      const stripeCheckout = res.data.url
-      localStorage.setItem("sessionID", JSON.stringify(res.data.sessionID))
-      window.location = stripeCheckout
-    } catch (error) {
-      console.log("issues submitting orderdata", error)
+
+    if (authedUser.loggedIn) {
+      try {
+        const res = await axios.post("http://localhost:3000/payments/create-session", orderData)
+        const stripeCheckout = res.data.url
+        localStorage.setItem("sessionID", JSON.stringify(res.data.sessionID))
+        window.location = stripeCheckout
+      } catch (error) {
+        console.log("issues submitting orderdata", error)
+      }
+    } else {
+      toast.error("Please log in, to proceed to checkout")
     }
 
   }

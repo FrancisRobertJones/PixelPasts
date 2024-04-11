@@ -19,7 +19,7 @@ const createCheckoutSession = async (request: Request, response: Response) => {
             price: item.default_price,
             quantity: item.quantity
         })),
-        customer_email: userData.email,
+        customer: userData.ID,
         success_url: "http://localhost:5173/success",
         cancel_url: "http://localhost.5173"
     })

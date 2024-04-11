@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useContext } from 'react';
 import { CartContext } from '../context/cartContext';
 import { CartActionType } from '../reducers/cartReducer';
+import { toast } from 'react-toastify';
 
 
 
@@ -19,6 +20,11 @@ interface ICheckoutProductProps {
 const CheckoutProduct = ({ cartItem }: ICheckoutProductProps) => {
 
   const { dispatchCart } = useContext(CartContext)
+
+  const removeFromCart = (name: string) => {
+    dispatchCart({ type: CartActionType.REMOVEFROMCART, payload: cartItem.product })
+    toast.success(`${name} removed from cart`)
+  }
 
   return (
 
@@ -44,11 +50,8 @@ const CheckoutProduct = ({ cartItem }: ICheckoutProductProps) => {
       <div className='flex justify-center items-center'>
         <div className='flex flex-col items-center'>
           <div className='flex'>
-            <button onClick={() => dispatchCart({ type: CartActionType.REMOVEFROMCART, payload: cartItem.product })} className="btn btn-square btn-outline mx-4">
+            <button onClick={() => removeFromCart(cartItem.product.name)} className="btn btn-square btn-outline mx-4">
               -
-            </button>
-            <button onClick={() => dispatchCart({ type: CartActionType.ADDTOCART, payload: cartItem.product })} className="btn btn-square btn-outline mx-4">
-              +
             </button>
           </div>
           <div className='mt-4'>
