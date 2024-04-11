@@ -4,8 +4,8 @@ import fs from "fs/promises"
 import { Order } from "../models/orders";
 
 const fetchOrders = async (request: Request, response: Response, next: NextFunction) => {
-    console.log("hejhej")
     const { email } = request.body
+
     if (!email) {
         return response.status(400).json({ error: 'Email is required' });
     }

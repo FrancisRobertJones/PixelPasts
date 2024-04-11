@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import ProductCard from "../Components/ProductCard"
 import axios from "axios"
 import { IProduct, IProductRes } from "../models/products"
+import { Link } from "react-router-dom"
 
 const Products = () => {
     const [products, setProducts] = useState<IProduct[]>([])
@@ -33,6 +34,8 @@ const Products = () => {
                         />
                     )}
                 </div> 
+                <Link to="/cart"><button className="btn btn-outline btn-primary mx-4">Cart</button></Link>
+
             </div>
         </div>
     )

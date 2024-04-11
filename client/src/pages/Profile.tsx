@@ -1,9 +1,37 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../context/authContext"
+import axios from "axios"
+import { IOrders } from "../models/Orders"
+import OrdersTable from "../Components/OrdersTable"
 
 const Profile = () => {
 
-    const {authedUser, logOut} = useContext(AuthContext)
+    const { authedUser, logOut } = useContext(AuthContext)
+    const [orders, setOrders] = useState<IOrders[]>()
+
+    useEffect(() => {
+        if (authedUser.User?.email) {
+
+            const fetchOrders = async () => {
+                try {
+                    const res = await axios.post("http://localhost:3000/profile/fetch-orders", { email: authedUser.User?.email })
+                    const orders: IOrders[] = res.data
+                    setOrders(orders)
+                } catch (error) {
+                    console.log(error, "error fetching orders")
+                }
+            }
+            fetchOrders()
+        } else {
+            console.log("user not fetched yet")
+        }
+    }, [authedUser.User?.email])
+
+    useEffect(() => {
+        console.log("thse are the ordres", orders)
+    }, [orders])
+
+
 
     return (
         <section className="bg-gray-50 w-[1200px] p-12">
@@ -36,12 +64,11 @@ const Profile = () => {
                     <label className="block mb-2 text-sm font-medium text-gray-900">Post Code</label>
                     <input type="number " name="postcode" id="postcode" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" disabled placeholder={authedUser.User?.address.postal_code} />
                 </div>
-                <button type="submit" className="w-[50%] ml-12 mt-12 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={() => alert("address update feature coming soon")}>Update Address</button>
-
             </div>
             <section>
-                <h1 className='text-black text-2xl mt-12'>Past purchases</h1>
-                <h4>You have no past purchases</h4>
+                <h1 className="text-2xl text-black">Your orders:</h1>
+                {orders &&
+                    <OrdersTable orders={orders} />}
             </section>
         </section>
     )
