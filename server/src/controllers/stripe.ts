@@ -21,7 +21,8 @@ const createCheckoutSession = async (request: Request, response: Response) => {
         })),
         customer: userData.ID,
         success_url: "http://localhost:5173/success",
-        cancel_url: "http://localhost.5173"
+        cancel_url: "http://localhost.5173",
+        allow_promotion_codes: true
     })
 
     response.status(200).json({ url: session.url, sessionID: session.id }) 

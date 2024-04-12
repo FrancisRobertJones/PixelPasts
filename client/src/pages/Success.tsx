@@ -34,7 +34,7 @@ const Success = () => {
       <div className='flex items-center flex-col justify-center h-[1200px] w-[100%] text-4xl'>
         <h1>GREAT SUCCESS</h1>
 
-        <Link to="/profile"><button className="btn btn-outline btn-primary mx-4">Profile & confirmed orders</button></Link></div>
+        <a href="/profile"><button className="btn btn-outline btn-primary mx-4">Profile & confirmed orders</button></a></div>
 
 
     </>

@@ -122,5 +122,17 @@
       "postal_code": "17073",
       "state": "Solna"
     }
+  },
+  {
+    "ID": "cus_PuSfnPn4wsok33",
+    "email": "francisrbones@hotmail.co.uk",
+    "name": "francis ",
+    "password": "$2b$10$MnlBBiPcHYT71iLen4onMuWftQP4kjT8zm8YWMSk465ZIVqEjmQ6C",
+    "address": {
+      "country": "sweden",
+      "line1": "173 pipers ",
+      "state": "solna ",
+      "postal_code": "101111"
+    }
   }
 ]

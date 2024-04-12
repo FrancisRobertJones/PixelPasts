@@ -3,6 +3,8 @@ import { AuthContext } from "../context/authContext"
 import axios from "axios"
 import { IOrders } from "../models/Orders"
 import OrdersTable from "../Components/OrdersTable"
+import { POSTNORD_APIKEY, POSTNORD_BASEURL } from "../constants/postnord"
+import { IPostNordRes } from "../models/postnord"
 
 const Profile = () => {
 
@@ -21,16 +23,13 @@ const Profile = () => {
                     console.log(error, "error fetching orders")
                 }
             }
+
             fetchOrders()
+
         } else {
             console.log("user not fetched yet")
         }
     }, [authedUser.User?.email])
-
-    useEffect(() => {
-        console.log("thse are the ordres", orders)
-    }, [orders])
-
 
 
     return (
@@ -53,12 +52,12 @@ const Profile = () => {
                     <input type="text" name="Country" id="Country" disabled className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder={authedUser.User?.address.country} />
                 </div>
                 <div className='m-6'>
-                    <label className="block mb-2 text-sm font-medium text-gray-900">County/Region</label>
-                    <input type="text" name="county" id="county" disabled className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder={authedUser.User?.address.country} required />
+                    <label className="block mb-2 text-sm font-medium text-gray-900">State</label>
+                    <input type="text" name="county" id="county" disabled className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder={authedUser.User?.address.state} required />
                 </div>
                 <div className='m-6'>
                     <label className="block mb-2 text-sm font-medium text-gray-900">Address</label>
-                    <input type="text" name="address" id="address" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" disabled placeholder={authedUser.User?.address.state} />
+                    <input type="text" name="address" id="address" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" disabled placeholder={authedUser.User?.address.line1} />
                 </div>
                 <div className='m-6'>
                     <label className="block mb-2 text-sm font-medium text-gray-900">Post Code</label>
