@@ -3,8 +3,6 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
-import { POSTNORD_APIKEY, POSTNORD_BASEURL } from "../constants/postnord"
-import { IPostNordRes } from "../models/postnord"
 
 interface IRegisterProps {
     handleToggleRegister: () => void
@@ -57,7 +55,8 @@ const Register = ({ handleToggleRegister }: IRegisterProps) => {
 
                 if (res.status === 201) {
                     console.log("user created successfully" + newUser)
-                    toast.success("Account created successfully")
+                    handleToggleRegister()
+                    toast.success("Account created successfully, please login to continue")
                 }
             } catch (error) {
                 if (axios.isAxiosError(error)) {
@@ -78,33 +77,6 @@ const Register = ({ handleToggleRegister }: IRegisterProps) => {
             alert("Passwords do not match")
         }
     }
-
-
-    const fetchPostNordStälle = async () => {
-        const postCode = authedUser.User?.address.postal_code
-        const country = authedUser.User?.address.country
-
-        let countryCode = ""
-        switch (country?.toLowerCase()) {
-            case 'sweden': countryCode = "SE";
-                break;
-            case 'norway': countryCode = "NO";
-                break;
-            case 'finland': countryCode = "FI";
-                break;
-            case 'denmark': countryCode = "DK";
-                break;
-        }
-
-        try {
-            const res = await axios.get<IPostNordRes>(`${POSTNORD_BASEURL}countryCode=${countryCode}&postalCode=${postCode}&numberOfServicePoints=5&apikey=${POSTNORD_APIKEY}`)
-            console.log("this is the postnord response", res)
-        } catch (error) {
-            console.log("there has been a problem retrieving postnord", error)
-        }
-    }
-
-
 
 
 
@@ -167,9 +139,6 @@ const Register = ({ handleToggleRegister }: IRegisterProps) => {
                         </p>
                     </div>
                 </form>
-
-
-                <button className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" onClick={fetchPostNordStälle}>Register for pickup point</button>
             </div>
         </section>
     )

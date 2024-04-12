@@ -4,12 +4,16 @@ import axios from "axios"
 import { IOrders } from "../models/Orders"
 import OrdersTable from "../Components/OrdersTable"
 import { POSTNORD_APIKEY, POSTNORD_BASEURL } from "../constants/postnord"
-import { IPostNordRes } from "../models/postnord"
+import { IPostNordRes, IServicePoint } from "../models/postnord"
+import ServicePointCard from "../Components/PickupPoints"
+import { nativeSelectClasses } from "@mui/material"
 
 const Profile = () => {
 
     const { authedUser, logOut } = useContext(AuthContext)
     const [orders, setOrders] = useState<IOrders[]>()
+    const [pickUp, setPickUp] = useState(false)
+    const [servicePointsState, setServicePointsState] = useState<IServicePoint[]>([])
 
     useEffect(() => {
         if (authedUser.User?.email) {
@@ -30,6 +34,41 @@ const Profile = () => {
             console.log("user not fetched yet")
         }
     }, [authedUser.User?.email])
+
+
+
+    const fetchPostNordStälle = async () => {
+        const postCode = authedUser.User?.address.postal_code
+        const country = authedUser.User?.address.country
+
+        let countryCode = ""
+        switch (country?.toLowerCase()) {
+            case 'sweden': countryCode = "SE";
+                break;
+            case 'norway': countryCode = "NO";
+                break;
+            case 'finland': countryCode = "FI";
+                break;
+            case 'denmark': countryCode = "DK";
+                break;
+        }
+
+        try {
+            const res = await axios.get<IPostNordRes>(`${POSTNORD_BASEURL}countryCode=${countryCode}&postalCode=${postCode}&numberOfServicePoints=5&apikey=${POSTNORD_APIKEY}`)
+            console.log("this is the postnord response", res)
+            setServicePointsState(res.data.servicePointInformationResponse.servicePoints)
+            console.log("service point data in state: ", servicePointsState)
+            console.log("service point data not in state:", res.data.servicePointInformationResponse.servicePoints)
+        } catch (error) {
+            console.log("there has been a problem retrieving postnord", error)
+        }
+    }
+
+
+    useEffect(() => {
+        console.log("here is the service point state in a use effect", servicePointsState)
+
+    }, [servicePointsState])
 
 
     return (
@@ -64,8 +103,17 @@ const Profile = () => {
                     <input type="number " name="postcode" id="postcode" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" disabled placeholder={authedUser.User?.address.postal_code} />
                 </div>
             </div>
+            <button type="submit" onClick={() => fetchPostNordStälle()} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Choose a pickup Point</button>
             <section>
-                <h1 className="text-2xl text-black">Your orders:</h1>
+
+                {servicePointsState.length > 1 && <h1 className="text-2xl text-black mt-8">Choose a pickup location:</h1>}
+                {servicePointsState.length > 1 &&
+                    servicePointsState.map((point) => {
+                        return <ServicePointCard point={point} />
+                    })
+                }
+
+                <h1 className="text-2xl text-black mt-8">Your orders:</h1>
                 {orders &&
                     <OrdersTable orders={orders} />}
             </section>

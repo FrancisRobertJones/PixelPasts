@@ -134,5 +134,53 @@
       "state": "solna ",
       "postal_code": "101111"
     }
+  },
+  {
+    "ID": "cus_PuZwr9sr7DXqct",
+    "email": "francisrjones@hotmail.co.uk123",
+    "name": "francis",
+    "password": "$2b$10$WVVgFIvjaXtGuTxzbX5LsuTD7kxCSzlJNnIS5ukRWZZXyOxIZE.W.",
+    "address": {
+      "country": "sweden",
+      "line1": "pipersväg",
+      "postal_code": "17073",
+      "state": "solna"
+    }
+  },
+  {
+    "ID": "cus_Pua0rN3U66OEac",
+    "email": "linneasjostrands@gmail.com",
+    "name": "linnea",
+    "password": "$2b$10$RZKYI8klbJ8mc.G99NrIpO3CRd0F0dooGTN3RzCbsOUFMZpNoYBba",
+    "address": {
+      "country": "sweden",
+      "line1": "stockholm",
+      "postal_code": "17073",
+      "state": "stockholm"
+    }
+  },
+  {
+    "ID": "cus_Pua47Zsay4DduZ",
+    "email": "linneabest@gmail.com",
+    "name": "linnea",
+    "password": "$2b$10$KWrOnxMCTAH2FtUCoWH6DuYZuscSmg3ZkZuDi9M0b0Mlcq.SO/9pC",
+    "address": {
+      "country": "sweden",
+      "line1": "pipersväg",
+      "postal_code": "17073",
+      "state": "solna"
+    }
+  },
+  {
+    "ID": "cus_Pua6NLd6cUBqcH",
+    "email": "francisrjones20@gmail.com",
+    "name": "francis",
+    "password": "$2b$10$I/HjHpzvYK10gocqrAvXae5L/f8IxFPNcLG20JOiQteDIH24QY6b.",
+    "address": {
+      "country": "123123",
+      "line1": "123123",
+      "postal_code": "123123",
+      "state": "123123"
+    }
   }
 ]
