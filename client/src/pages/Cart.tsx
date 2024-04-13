@@ -6,6 +6,7 @@ import { CartItemForStripe } from '../models/products'
 import { AuthContext } from '../context/authContext'
 import { OrderData } from '../models/user'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 const Cart = () => {
   const { cartItems } = useContext(CartContext)
@@ -69,8 +70,10 @@ const Cart = () => {
             <button onClick={handleCheckout} className="btn btn-outline btn-primary mx-4">Checkout</button>
           </div>
           :
-          <div className='text-3xl'>No items in cart</div>
-
+          <div className='flex flex-col items-center'> 
+            <div className='mt-12 text-3xl'>No items in cart</div>
+           <Link to={"/products"}> <button className=" mt-12 btn btn-outline btn-primary mx-4">Store</button></Link>
+           </div>
       }
     </div>
   )

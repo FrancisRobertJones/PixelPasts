@@ -1,8 +1,12 @@
+import { IServicePointData, ServicePoint } from "./servicePoint"
+
 interface IUser {
     email: string,
     name: string,
     password: string,
-    address: IAddress
+    address: IAddress,
+    servicePoint?: ServicePoint
+
 }
 
 interface IAddress {

@@ -4,7 +4,7 @@ import { IUser } from "../models/userInterfaces";
 import { User } from "../models/userClass";
 import bcrypt from "bcrypt"
 import { fetchUsers } from "../util/findUsers";
-import { createNewUser } from "../util/createNewUser/createUser";
+import { saveUsers } from "../util/createNewUser/createUser";
 import { v4 as uuidv4 } from 'uuid';
 import { createNewStripeCustomer } from "../util/stripe/createCustomerstripe";
 
@@ -31,7 +31,7 @@ const createUser = async (request: Request, response: Response, next: NextFuncti
     users.push(updatedUser);
 
     try {
-        await createNewUser(users)
+        await saveUsers(users)
         console.log("new user updated successfully")
         response.status(201).json(users)
     } catch (error) {

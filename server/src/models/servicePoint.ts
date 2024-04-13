@@ -1,10 +1,5 @@
-export interface IPostNordRes {
-    servicePointInformationResponse: {
-        servicePoints: IServicePoint[]
-    }
-}
-
-export interface IServicePoint {
+interface IServicePointData {
+    email: string,
     name: string,
     servicePointId: string,
     visitingAddress: {
@@ -16,9 +11,8 @@ export interface IServicePoint {
     }
 }
 
-export class ServicePointSelected {
+class ServicePoint {
     constructor(
-        public email: string,
         public name: string,
         public servicePointId: string,
         public visitingAddress: {
@@ -28,5 +22,7 @@ export class ServicePointSelected {
             streetName: string,
             streetNumber: string,
         }
-    ) {}
+    ) { }
 }
+
+export { IServicePointData, ServicePoint }

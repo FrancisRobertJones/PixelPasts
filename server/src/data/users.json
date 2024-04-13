@@ -193,6 +193,42 @@
       "line1": "Snoilskyvägen 34",
       "postal_code": "11254",
       "state": "Stockholm"
+    },
+    "servicePoint": {
+      "name": "Direkten Vi Vinnare",
+      "servicePointId": "593071",
+      "visitingAddress": {
+        "countryCode": "SE",
+        "city": "STOCKHOLM",
+        "streetName": "Rålambsvägen",
+        "streetNumber": "14",
+        "postalCode": "11259",
+        "additionalDescription": null
+      }
+    }
+  },
+  {
+    "ID": "cus_PuqhG4rz9Dpb8H",
+    "email": "antoncala@gmail.com",
+    "name": "anton",
+    "password": "$2b$10$9XO924Cs648IiTk2O.IMSu7EsVdL9tIoTGqvVPU0NNsGw/x/Ru5IK",
+    "address": {
+      "country": "Sweden",
+      "line1": "Gamla Huddingevägen 411",
+      "postal_code": "12542",
+      "state": "Stockholm"
+    },
+    "servicePoint": {
+      "name": "Hemköp örby älvsjö",
+      "servicePointId": "506475",
+      "visitingAddress": {
+        "countryCode": "SE",
+        "city": "ÄLVSJÖ",
+        "streetName": "Gamla Huddingevägen",
+        "streetNumber": "431",
+        "postalCode": "12542",
+        "additionalDescription": null
+      }
     }
   }
 ]

@@ -290,5 +290,18 @@
       }
     ],
     "totalCost": 3050
+  },
+  {
+    "id": "cs_test_b1VgfzYKXujbkx4AV29WF9DFJ7T4yeDRcqVUrpLtmZSriLopbgktZpyrba",
+    "email": "antoncala@gmail.com",
+    "customerName": "anton",
+    "products": [
+      {
+        "productId": "li_1P513RRpeYHWrPIgPHaHtk45",
+        "description": "Gameboy Colour",
+        "quantity": 1
+      }
+    ],
+    "totalCost": 1080
   }
 ]

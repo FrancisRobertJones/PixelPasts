@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import { createUser, login, authCheck, logout } from "../controllers/auth";
+import { updateServicePoint } from "../controllers/servicePoint";
 
 const authRouter = express.Router()
 
@@ -19,5 +20,7 @@ authRouter.get("/auth-check", authCheck, (request: Request, res: Response, next:
 authRouter.get("/logout", logout, (request: Request, res: Response, next: NextFunction) => {
     console.log("logout endpoint hit")
 })
+
+authRouter.post("/servicepoint", updateServicePoint)
 
 export { authRouter }
