@@ -2,7 +2,7 @@ import { CartProduct, ICartItem, IProduct } from "../models/products"
 
 export interface ICartAction {
     type: CartActionType,
-    payload: IProduct
+    payload?: IProduct | null,
 }
 
 export enum CartActionType {
@@ -12,21 +12,23 @@ export enum CartActionType {
 }
 
 export const CartReducer = (cartItems: ICartItem[], action: ICartAction) => {
-    if (action.type === CartActionType.ADDTOCART) {
-        const clonedCart = [...cartItems]
 
-        const itemThatsAlreadyAdded = clonedCart.find((item) => item.product.id === action.payload.id)
-        if (itemThatsAlreadyAdded) {
-            itemThatsAlreadyAdded.quantity ++
-        } else {
-            clonedCart.push(new CartProduct(1, action.payload))
+    if (action.type === CartActionType.ADDTOCART) {
+        if (action.payload && action.payload.id) {
+            const clonedCart = [...cartItems]
+            const itemThatsAlreadyAdded = clonedCart.find((item) => item.product.id === action.payload?.id)
+            if (itemThatsAlreadyAdded) {
+                itemThatsAlreadyAdded.quantity++
+            } else {
+                clonedCart.push(new CartProduct(1, action.payload))
+            }
+            return clonedCart
         }
-        return clonedCart
     }
 
     if (action.type === CartActionType.REMOVEFROMCART) {
         const clonedCart = [...cartItems]
-        const selectedItemIndex = clonedCart.findIndex((item) => item.product.id === action.payload.id)
+        const selectedItemIndex = clonedCart.findIndex((item) => item.product.id === action.payload?.id)
 
         if (clonedCart[selectedItemIndex].quantity >= 2) {
             clonedCart[selectedItemIndex] = { ...clonedCart[selectedItemIndex], quantity: clonedCart[selectedItemIndex].quantity - 1 }
@@ -36,5 +38,9 @@ export const CartReducer = (cartItems: ICartItem[], action: ICartAction) => {
 
         return clonedCart
     }
+
+    if (action.type === CartActionType.EMPTYCART) {
+        return []
+    } 
     return cartItems;
 }

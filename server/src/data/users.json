@@ -182,5 +182,17 @@
       "postal_code": "123123",
       "state": "123123"
     }
+  },
+  {
+    "ID": "cus_PuoYvfdCbSznXX",
+    "email": "viktornivaeus@gmail.com",
+    "name": "Viktor",
+    "password": "$2b$10$2OM.vRulYwsa1LafqVfxO.beY/II12QMWTG09g4USnSdKD9Zpj/HK",
+    "address": {
+      "country": "Sweden",
+      "line1": "Snoilskyvägen 34",
+      "postal_code": "11254",
+      "state": "Stockholm"
+    }
   }
 ]

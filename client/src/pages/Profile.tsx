@@ -12,8 +12,8 @@ const Profile = () => {
 
     const { authedUser, logOut } = useContext(AuthContext)
     const [orders, setOrders] = useState<IOrders[]>()
-    const [pickUp, setPickUp] = useState(false)
     const [servicePointsState, setServicePointsState] = useState<IServicePoint[]>([])
+    const [showOrders, setToggleShowOrders] = useState(false)
 
     useEffect(() => {
         if (authedUser.User?.email) {
@@ -103,7 +103,9 @@ const Profile = () => {
                     <input type="number " name="postcode" id="postcode" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" disabled placeholder={authedUser.User?.address.postal_code} />
                 </div>
             </div>
-            <button type="submit" onClick={() => fetchPostNordStälle()} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Choose a pickup Point</button>
+            <button onClick={() => fetchPostNordStälle()} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Choose a pickup Point</button>
+
+
             <section>
 
                 {servicePointsState.length > 1 && <h1 className="text-2xl text-black mt-8">Choose a pickup location:</h1>}
@@ -112,9 +114,11 @@ const Profile = () => {
                         return <ServicePointCard point={point} />
                     })
                 }
+                <button onClick={() => setToggleShowOrders((prev) => !prev)} className="my-4 w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{showOrders ? "Hide orders" : "Show orders"}</button>
 
-                <h1 className="text-2xl text-black mt-8">Your orders:</h1>
-                {orders &&
+                {(orders && orders.length<1 && showOrders) && <h1 className="text-2xl text-black mt-8">No orders to show</h1>}
+                {(orders && orders.length>1 && showOrders) && <h1 className="text-2xl text-black mt-8">Your orders:</h1>}
+                {(orders && showOrders) &&
                     <OrdersTable orders={orders} />}
             </section>
         </section>

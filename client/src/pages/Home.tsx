@@ -12,9 +12,14 @@ function Home() {
         <div className='flex'>
           <Link to="./products"><button className="btn btn-outline btn-primary mx-4">Visit our store</button></Link>
           {authedUser.loggedIn ?
+          <>
             <button className="btn btn-outline btn-primary mx-4" onClick={logOut}>Logout</button>
-            :
-            <Link to="./auth"><button className="btn btn-outline btn-primary mx-4">Login/Register</button></Link>
+            <Link to="/profile"><button className="btn btn-outline btn-primary mx-4">Profile</button></Link>
+            </>
+            : <>
+              <Link to="/auth"><button className="btn btn-outline btn-primary mx-4">Login/Register</button></Link>
+            </>
+
           }
         </div>
       </div>
